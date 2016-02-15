@@ -1,8 +1,6 @@
-# Shrine::Storage::YouTube
+# Shrine::YouTube
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/shrine/storage/you_tube`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Provides [YouTube](https://youtube.com) storage for [Shrine](http://shrinerb.com).
 
 ## Installation
 
@@ -12,17 +10,24 @@ Add this line to your application's Gemfile:
 gem 'shrine-storage-you_tube'
 ```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install shrine-storage-you_tube
-
 ## Usage
 
-TODO: Write usage instructions here
+Since YouTube's API doesn't allow reading of uploaded data, the YouTube storage must be paired with another storage provider to hold the original videos. Videos are first uploaded to YouTube and then to the specified storage provider using the ID returned from the YouTube upload.
+
+```ruby
+require "shrine/storage/you_tube"
+require "shrine/storage/s3"
+
+s3 = Shrine::Storage::S3.new(**s3_options)
+youtube = Shrine::Storage::YouTube.new(
+  storage: s3,
+  client_id: "abc123",
+  client_secret: "def456",
+  refresh_token: "ghi789"
+)
+
+Shrine.storages[:store] = youtube
+```
 
 ## Development
 
@@ -32,5 +37,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/shrine-storage-you_tube.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/shrine-you_tube.
