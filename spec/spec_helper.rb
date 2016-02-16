@@ -17,9 +17,9 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.cassette_library_dir = 'spec/cassettes'
 
-  c.filter_sensitive_data('<CLIENT_ID>') { ENV['GOOGLE_OAUTH_CLIENT_ID'] }
-  c.filter_sensitive_data('<CLIENT_SECRET>') { ENV['GOOGLE_OAUTH_CLIENT_SECRET'] }
-  c.filter_sensitive_data('<REFRESH_TOKEN>') { CGI.escape ENV['GOOGLE_OAUTH_REFRESH_TOKEN'] }
+  c.filter_sensitive_data('<CLIENT_ID>') { ENV['GOOGLE_OAUTH_CLIENT_ID'] || 'abc' }
+  c.filter_sensitive_data('<CLIENT_SECRET>') { ENV['GOOGLE_OAUTH_CLIENT_SECRET'] || 'def' }
+  c.filter_sensitive_data('<REFRESH_TOKEN>') { CGI.escape ENV['GOOGLE_OAUTH_REFRESH_TOKEN'] || 'hij' }
   c.filter_sensitive_data('<ACCESS_TOKEN>') do |interaction|
     parsed = JSON.parse(interaction.response.body) rescue {}
     parsed["access_token"]
