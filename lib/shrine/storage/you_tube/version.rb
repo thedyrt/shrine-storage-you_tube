@@ -1,6 +1,6 @@
-module Shrine
+class Shrine
   module Storage
-    module YouTube
+    class YouTube
       VERSION = "0.1.0"
     end
   end
