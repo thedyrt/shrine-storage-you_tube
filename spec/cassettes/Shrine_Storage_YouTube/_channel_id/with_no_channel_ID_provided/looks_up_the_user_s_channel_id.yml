@@ -27,7 +27,7 @@ http_interactions:
       Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Tue, 16 Feb 2016 14:38:50 GMT
+      - Wed, 17 Feb 2016 00:21:06 GMT
       Vary:
       - Origin
       - X-Origin
@@ -56,7 +56,7 @@ http_interactions:
          "expires_in": 3600
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:38:50 GMT
+  recorded_at: Wed, 17 Feb 2016 00:21:07 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
@@ -73,7 +73,7 @@ http_interactions:
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:38:50 GMT
+      - Wed, 17 Feb 2016 00:21:07 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
   response:
@@ -82,9 +82,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 16 Feb 2016 14:38:50 GMT
+      - Wed, 17 Feb 2016 00:21:07 GMT
       Date:
-      - Tue, 16 Feb 2016 14:38:50 GMT
+      - Wed, 17 Feb 2016 00:21:07 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
@@ -129,5 +129,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:38:50 GMT
+  recorded_at: Wed, 17 Feb 2016 00:21:07 GMT
 recorded_with: VCR 3.0.1

@@ -54,9 +54,6 @@ describe Shrine::Storage::YouTube, :vcr do
       expect { youtube_storage }.to_not raise_exception
     end
 
-    it "looks up the user's channel_id" do
-      expect(youtube_storage.channel_id).to_not be_nil
-    end
 
     REQUIRED_ATTRIBUTES.each do |key|
       context "without require attribute '#{key}'" do
@@ -76,6 +73,23 @@ describe Shrine::Storage::YouTube, :vcr do
         it "exposes #{key} on the instance" do
           expect(youtube_storage.send(key)).to eq option_value
         end
+      end
+    end
+  end
+
+  describe "#channel_id" do
+    context "with no channel ID provided" do
+      it "looks up the user's channel_id" do
+        expect(youtube_storage.channel_id).to_not be_nil
+      end
+    end
+
+    context "when a channel ID is given" do
+      let(:channel_id) { double }
+      let(:options) { minimum_options.merge(channel_id: channel_id) }
+
+      it "uses the provided channel ID" do
+        expect(youtube_storage.channel_id).to eq channel_id
       end
     end
   end

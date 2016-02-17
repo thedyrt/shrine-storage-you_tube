@@ -12,7 +12,7 @@ class Shrine
 
       class VideoNotFound < StandardError; end
 
-      attr_reader :original_storage, :youtube, :channel_id, :default_privacy, :upload_options
+      attr_reader :original_storage, :youtube, :default_privacy, :upload_options
 
       def initialize(
         original_storage:,
@@ -29,7 +29,7 @@ class Shrine
           refresh_token: refresh_token
         )
 
-        @channel_id = channel_id || find_user_channel
+        @channel_id = channel_id
         @default_privacy = default_privacy
         @upload_options = upload_options
         @original_storage = original_storage
@@ -37,6 +37,10 @@ class Shrine
 
       extend Forwardable
       delegate [:download, :open, :read, :stream] => :original_storage
+
+      def channel_id
+        @channel_id ||= find_user_channel
+      end
 
       def upload(io, id, metadata = {})
         snippet = { title: metadata["filename"], channel_id: channel_id }
