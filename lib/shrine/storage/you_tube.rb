@@ -49,7 +49,11 @@ class Shrine
 
         video_data = Google::Apis::YoutubeV3::Video.new( snippet: snippet )
 
-        uploaded_video = youtube.insert_video('snippet', video_data, upload_source: io)
+        begin
+          uploaded_video = youtube.insert_video('snippet', video_data, upload_source: io)
+        rescue Google::Apis::ClientError
+          uploaded_video = youtube.insert_video('snippet', video_data, upload_source: io.download)
+        end
         id.replace(uploaded_video.id)
 
         io.rewind
