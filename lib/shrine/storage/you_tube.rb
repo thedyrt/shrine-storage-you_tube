@@ -67,6 +67,7 @@ class Shrine
       end
 
       def delete(id)
+        return unless exists?(id)
         youtube.delete_video(id)
         original_storage.delete(id)
       end
