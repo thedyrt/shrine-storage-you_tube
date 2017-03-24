@@ -43,20 +43,14 @@ class Shrine
       end
 
       def upload(io, id, metadata = {})
-        snippet = { title: metadata["filename"], channel_id: channel_id }
+        snippet = { title: metadata['filename'], channel_id: channel_id }
         snippet.update(upload_options)
-        snippet.update(metadata.delete("youtube") || {})
+        snippet.update(metadata.delete('youtube') || {})
 
-        video_data = Google::Apis::YoutubeV3::Video.new( snippet: snippet )
+        video_data = Google::Apis::YoutubeV3::Video.new(snippet: snippet)
+        uploaded_video = upload_video(io, video_data)
 
-        begin
-          uploaded_video = youtube.insert_video('snippet', video_data, upload_source: io)
-        rescue Google::Apis::ClientError
-          uploaded_video = youtube.insert_video('snippet', video_data, upload_source: io.download)
-        end
         id.replace(uploaded_video.id)
-
-        io.rewind
         original_storage.upload(io, id, metadata)
 
         uploaded_video.to_h
@@ -144,6 +138,19 @@ class Shrine
 
       def uploads_playlist_count
         uploads_playlist_items.page_info.total_results
+      end
+
+      def upload_video(io, video_data)
+        youtube.insert_video('snippet', video_data, upload_source: io)
+      rescue Google::Apis::ClientError => e
+        raise e unless (
+          e.message.include?('mediaBodyRequired') ||
+          e.message.include?('invalidFilename')
+        ) && io.respond_to?(:download)
+
+        youtube.insert_video('snippet', video_data, upload_source: io.download)
+      ensure
+        io.rewind
       end
     end
   end
