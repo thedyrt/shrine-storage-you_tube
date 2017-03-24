@@ -6,11 +6,11 @@ require 'shrine/storage/you_tube/version'
 Gem::Specification.new do |spec|
   spec.name          = "shrine-storage-you_tube"
   spec.version       = Shrine::Storage::YouTube::VERSION
-  spec.authors       = ["Reid Beels"]
-  spec.email         = ["mail@reidbeels.com"]
+  spec.authors       = ["Reid Beels", "The Dyrt"]
+  spec.email         = ["reid@thedyrt.com"]
 
   spec.summary       = %q{Provides YouTube storage for the Shrine file upload framework.}
-  spec.homepage      = "https://github.com/reidab/shrine-storage-you_tube"
+  spec.homepage      = "https://github.com/thedyrt/shrine-storage-you_tube"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"
