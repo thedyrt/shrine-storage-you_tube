@@ -5,10 +5,13 @@ http_interactions:
     uri: https://www.googleapis.com/oauth2/v3/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=refresh_token&refresh_token=<REFRESH_TOKEN>&client_id=<CLIENT_ID>&client_secret=<CLIENT_SECRET>
+      base64_string: |
+        Z3JhbnRfdHlwZT1yZWZyZXNoX3Rva2VuJnJlZnJlc2hfdG9rZW49PFJFRlJF
+        U0hfVE9LRU4+JmNsaWVudF9pZD08Q0xJRU5UX0lEPiZjbGllbnRfc2VjcmV0
+        PTxDTElFTlRfU0VDUkVUPg==
     headers:
       User-Agent:
-      - Faraday v0.9.2
+      - Faraday v0.11.0
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -25,9 +28,9 @@ http_interactions:
       Pragma:
       - no-cache
       Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
+      - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:12 GMT
+      - Fri, 24 Mar 2017 03:20:50 GMT
       Vary:
       - Origin
       - X-Origin
@@ -41,22 +44,17 @@ http_interactions:
       - 1; mode=block
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=604800; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: |
-        {
-         "access_token": "<ACCESS_TOKEN>",
-         "token_type": "Bearer",
-         "expires_in": 3600
-        }
+      base64_string: |
+        ewogImFjY2Vzc190b2tlbiI6ICI8QUNDRVNTX1RPS0VOPiIsCiAidG9rZW5f
+        dHlwZSI6ICJCZWFyZXIiLAogImV4cGlyZXNfaW4iOiAzNjAwCn0K
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:12 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:50 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
@@ -66,14 +64,14 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:12 GMT
+      - Fri, 24 Mar 2017 03:20:50 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
   response:
@@ -82,13 +80,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 16 Feb 2016 14:39:12 GMT
+      - Fri, 24 Mar 2017 03:20:50 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:12 GMT
+      - Fri, 24 Mar 2017 03:20:50 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/zp_QHU_SZbFNB23Og-VYZW09B0Y"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ"'
       Vary:
       - Origin
       - X-Origin
@@ -104,10 +102,8 @@ http_interactions:
       - 1; mode=block
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -115,7 +111,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#channelListResponse",
-         "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/zp_QHU_SZbFNB23Og-VYZW09B0Y\"",
+         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -123,30 +119,30 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#channel",
-           "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/8Is_ZSZGdsHBQz1b7Fa0CMkjtdg\"",
-           "id": "UCgN7hjqmH2jC_Hs7zQfaZXg"
+           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/bYpw7E-EiYSlS92u1Om6dbfT5aw\"",
+           "id": "UCB6Uq1L3G6CfiPt9l4CI-Gg"
           }
          ]
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:12 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:50 GMT
 - request:
     method: post
     uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet
     body:
       encoding: UTF-8
-      string: '{"snippet":{"channelId":"UCgN7hjqmH2jC_Hs7zQfaZXg","title":null}}'
+      string: '{"snippet":{"channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","title":null}}'
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:12 GMT
+      - Fri, 24 Mar 2017 03:20:50 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -167,55 +163,53 @@ http_interactions:
       message: OK
     headers:
       X-Guploader-Uploadid:
-      - AEnB2Up2kKlGkDDJmG3KItyJSvOeX6OBGuXEaEmkMSEab7BCdz-xcsFs_o6PqmSeKXCUw9lQ-p1dgbEKGGtzLiwK6HD4Y548Rw
+      - AEnB2UooJyiaoXats3jcCqv_p0dK71XwXWz7i4MdnBtOKh8l6ElmP_TceheL-wkBJIqbRa7osTDjoyRMOCImBSWZ5o8ZaRCjBg
       X-Goog-Upload-Status:
       - active
       X-Goog-Upload-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Up2kKlGkDDJmG3KItyJSvOeX6OBGuXEaEmkMSEab7BCdz-xcsFs_o6PqmSeKXCUw9lQ-p1dgbEKGGtzLiwK6HD4Y548Rw&upload_protocol=resumable
+      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UooJyiaoXats3jcCqv_p0dK71XwXWz7i4MdnBtOKh8l6ElmP_TceheL-wkBJIqbRa7osTDjoyRMOCImBSWZ5o8ZaRCjBg&upload_protocol=resumable
       X-Goog-Upload-Control-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Up2kKlGkDDJmG3KItyJSvOeX6OBGuXEaEmkMSEab7BCdz-xcsFs_o6PqmSeKXCUw9lQ-p1dgbEKGGtzLiwK6HD4Y548Rw&upload_protocol=resumable
+      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UooJyiaoXats3jcCqv_p0dK71XwXWz7i4MdnBtOKh8l6ElmP_TceheL-wkBJIqbRa7osTDjoyRMOCImBSWZ5o8ZaRCjBg&upload_protocol=resumable
       X-Goog-Upload-Header-Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/tuaK56Ri9rnllcRH5UEV0XMYn5g"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/lTKt1eK1sHA1qfNbN1Zm3ysXVTc"'
       X-Goog-Upload-Header-Vary:
       - Origin
       - X-Origin
       X-Goog-Upload-Header-X-Goog-Correlation-Id:
-      - s9vLAUllch4
+      - 0cjj3t8QffM
       X-Goog-Upload-Header-X-Google-Backends:
-      - lex79:4267
+      - iuep187:8172
       X-Goog-Upload-Header-X-Google-Session-Info:
-      - CMbBtJiRDxoCGAYwADpzCg55b3V0dWJlLWFwaS12MxIHeW91dHViZRjx7Nb5pQUiSDE4MTk4NTk4MjA2NS0yZzYxcHBqN2Q5dWJyYTRyMzBlaTZoZjVpNGE0MDNtbi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbTD-CjD7CjD4CkpeEkt5YTI5LmlnSkRsRmxCTld1TDJpMktWcUd4bXFXdXdXVmd1V3oyNnloankwNDBDc002a0ZBWEtLaVFCblpqSVNoMEM1anF0WEF6aWcwBDoNMS9tWFBkS0lVRm1rfg
+      - CMvhzvXIEBoCGAY6hgEKIXlvdXR1YmUtc3R1YmJ5LXByb3h5LWV4dGVybmFsLWFwaRIHeW91dHViZRjx7Nb5pQUiSDE4MTk4NTk4MjA2NS0yZzYxcHBqN2Q5dWJyYTRyMzBlaTZoZjVpNGE0MDNtbi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbTD-CjD4CjD7CkqXARKDAXlhMjkuR2x3WUJLaEpwbElwRlREbS14d2tVWTUyZTRmUEtjZmhqdnlyc3h4Ni14RUd3RnZFXzZDeVNPb05IejBTRUtpeTg2TDdwUndDeWJ5amd0a0JUYm1fSTdRdUtTVXIxenVnOVpsZTVybVhud1UzbDVVUW9UMEFBd21KWHg0aF9BMAQ6DTEvSGFkVmFWYkhPRn4
       X-Goog-Upload-Header-Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
       X-Goog-Upload-Header-Pragma:
       - no-cache
       X-Goog-Upload-Header-Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
+      - Mon, 01 Jan 1990 00:00:00 GMT
       X-Goog-Upload-Header-Date:
-      - Tue, 16 Feb 2016 14:39:13 GMT
+      - Fri, 24 Mar 2017 03:20:51 GMT
       Content-Length:
       - '0'
       Date:
-      - Tue, 16 Feb 2016 14:39:13 GMT
+      - Fri, 24 Mar 2017 03:20:51 GMT
       Server:
       - UploadServer
       Content-Type:
       - text/html; charset=UTF-8
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:13 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:51 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Up2kKlGkDDJmG3KItyJSvOeX6OBGuXEaEmkMSEab7BCdz-xcsFs_o6PqmSeKXCUw9lQ-p1dgbEKGGtzLiwK6HD4Y548Rw&upload_protocol=resumable
+    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UooJyiaoXats3jcCqv_p0dK71XwXWz7i4MdnBtOKh8l6ElmP_TceheL-wkBJIqbRa7osTDjoyRMOCImBSWZ5o8ZaRCjBg&upload_protocol=resumable
     body:
       encoding: UTF-8
-      string: !binary |-
+      base64_string: |
         AAAAIGZ0eXBpc29tAAACAGlzb21pc28yYXZjMW1wNDEAAAUVbW9vdgAAAGxt
         dmhkAAAAANLoy8XS6MvFAAAD6AAAAs0AAQAAAQAAAAAAAAAAAAAAAAEAAAAA
         AAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -278,14 +272,14 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:13 GMT
+      - Fri, 24 Mar 2017 03:20:51 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
       Content-Type:
@@ -302,16 +296,16 @@ http_interactions:
       message: OK
     headers:
       X-Guploader-Uploadid:
-      - AEnB2Up2kKlGkDDJmG3KItyJSvOeX6OBGuXEaEmkMSEab7BCdz-xcsFs_o6PqmSeKXCUw9lQ-p1dgbEKGGtzLiwK6HD4Y548Rw
+      - AEnB2UooJyiaoXats3jcCqv_p0dK71XwXWz7i4MdnBtOKh8l6ElmP_TceheL-wkBJIqbRa7osTDjoyRMOCImBSWZ5o8ZaRCjBg
       X-Goog-Upload-Status:
       - final
       Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/tuaK56Ri9rnllcRH5UEV0XMYn5g"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/lTKt1eK1sHA1qfNbN1Zm3ysXVTc"'
       Vary:
       - Origin
       - X-Origin
       X-Goog-Correlation-Id:
-      - s9vLAUllch4
+      - 0cjj3t8QffM
       Content-Type:
       - application/json; charset=UTF-8
       Cache-Control:
@@ -319,47 +313,45 @@ http_interactions:
       Pragma:
       - no-cache
       Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
+      - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:14 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Content-Length:
-      - '803'
+      - '808'
       Server:
       - UploadServer
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=604800; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: |
         {
          "kind": "youtube#video",
-         "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/tuaK56Ri9rnllcRH5UEV0XMYn5g\"",
-         "id": "s9vLAUllch4",
+         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/lTKt1eK1sHA1qfNbN1Zm3ysXVTc\"",
+         "id": "0cjj3t8QffM",
          "snippet": {
-          "publishedAt": "2016-02-16T14:39:13.000Z",
-          "channelId": "UCgN7hjqmH2jC_Hs7zQfaZXg",
+          "publishedAt": "2017-03-24T03:20:51.000Z",
+          "channelId": "UCB6Uq1L3G6CfiPt9l4CI-Gg",
           "title": "unknown",
           "description": "",
           "thumbnails": {
            "default": {
-            "url": "https://i.ytimg.com/vi/s9vLAUllch4/default.jpg",
+            "url": "https://i.ytimg.com/vi/0cjj3t8QffM/default.jpg",
             "width": 120,
             "height": 90
            },
            "medium": {
-            "url": "https://i.ytimg.com/vi/s9vLAUllch4/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/0cjj3t8QffM/mqdefault.jpg",
             "width": 320,
             "height": 180
            },
            "high": {
-            "url": "https://i.ytimg.com/vi/s9vLAUllch4/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/0cjj3t8QffM/hqdefault.jpg",
             "width": 480,
             "height": 360
            }
           },
-          "channelTitle": "Reid Beels",
+          "channelTitle": "another channel",
           "categoryId": "22",
           "liveBroadcastContent": "none",
           "localized": {
@@ -369,24 +361,24 @@ http_interactions:
          }
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:14 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=s9vLAUllch4&part=id
+    uri: https://www.googleapis.com/youtube/v3/videos?id=0cjj3t8QffM&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:14 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
   response:
@@ -395,13 +387,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 16 Feb 2016 14:39:14 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:14 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/5ylu2V0DV2NXu01cJS4Empcb6_k"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/UVIWoSud1Mn-sM8zUHwFRt0l_yo"'
       Vary:
       - Origin
       - X-Origin
@@ -417,10 +409,8 @@ http_interactions:
       - 1; mode=block
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -428,7 +418,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#videoListResponse",
-         "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/5ylu2V0DV2NXu01cJS4Empcb6_k\"",
+         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/UVIWoSud1Mn-sM8zUHwFRt0l_yo\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -436,30 +426,101 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#video",
-           "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/gpVXh34E7RzQwZ1i122s2z7WgaU\"",
-           "id": "s9vLAUllch4"
+           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/7ZLlvnwcCsNP0R17WR6QGxZO83g\"",
+           "id": "0cjj3t8QffM"
           }
          ]
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:14 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:53 GMT
 - request:
-    method: delete
-    uri: https://www.googleapis.com/youtube/v3/videos?id=s9vLAUllch4
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=0cjj3t8QffM&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:14 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
+      Authorization:
+      - Bearer <BEARER_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 24 Mar 2017 03:20:53 GMT
+      Date:
+      - Fri, 24 Mar 2017 03:20:53 GMT
+      Cache-Control:
+      - private, max-age=300, must-revalidate, no-transform
+      Etag:
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/UVIWoSud1Mn-sM8zUHwFRt0l_yo"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="37,36,35"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "youtube#videoListResponse",
+         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/UVIWoSud1Mn-sM8zUHwFRt0l_yo\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#video",
+           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/7ZLlvnwcCsNP0R17WR6QGxZO83g\"",
+           "id": "0cjj3t8QffM"
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 24 Mar 2017 03:20:53 GMT
+- request:
+    method: delete
+    uri: https://www.googleapis.com/youtube/v3/videos?id=0cjj3t8QffM
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - |-
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
+         (gzip)
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip,deflate
+      Date:
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
   response:
@@ -472,42 +533,40 @@ http_interactions:
       Pragma:
       - no-cache
       Expires:
-      - Fri, 01 Jan 1990 00:00:00 GMT
+      - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:15 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/FtR7Cg5MupA8iia4Yp6ywbK1vio"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/aBIRp7cgOI9cIbjjOH2L0vLcl7w"'
       Vary:
       - Origin
       - X-Origin
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:15 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:53 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=s9vLAUllch4&part=id
+    uri: https://www.googleapis.com/youtube/v3/videos?id=0cjj3t8QffM&part=id
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.2 Mac OS X/10.11.4
+        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Tue, 16 Feb 2016 14:39:15 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
   response:
@@ -516,13 +575,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Tue, 16 Feb 2016 14:39:15 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Date:
-      - Tue, 16 Feb 2016 14:39:15 GMT
+      - Fri, 24 Mar 2017 03:20:53 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"DsOZ7qVJA4mxdTxZeNzis6uE6ck/H-lesoJchb3kcdZTVMTQH6Ni5Fw"'
+      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/LqoqyXkOVM7gpSVcVWawnZI0-Bw"'
       Vary:
       - Origin
       - X-Origin
@@ -538,10 +597,8 @@ http_interactions:
       - 1; mode=block
       Server:
       - GSE
-      Alternate-Protocol:
-      - 443:quic,p=1
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="30,29,28,27,26,25"
+      - quic=":443"; ma=2592000; v="37,36,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -549,7 +606,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#videoListResponse",
-         "etag": "\"DsOZ7qVJA4mxdTxZeNzis6uE6ck/H-lesoJchb3kcdZTVMTQH6Ni5Fw\"",
+         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/LqoqyXkOVM7gpSVcVWawnZI0-Bw\"",
          "pageInfo": {
           "totalResults": 0,
           "resultsPerPage": 0
@@ -557,5 +614,5 @@ http_interactions:
          "items": []
         }
     http_version: 
-  recorded_at: Tue, 16 Feb 2016 14:39:15 GMT
+  recorded_at: Fri, 24 Mar 2017 03:20:53 GMT
 recorded_with: VCR 3.0.1
