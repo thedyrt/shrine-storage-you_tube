@@ -1,5 +1,5 @@
-require "shrine/storage/you_tube/version"
-require "google/apis/youtube_v3"
+require 'shrine/storage/you_tube/version'
+require 'google/apis/youtube_v3'
 
 class Shrine
   module Storage
@@ -42,7 +42,7 @@ class Shrine
         @channel_id ||= find_user_channel
       end
 
-      def upload(io, id, metadata = {})
+      def upload(io, id, metadata = {}, **upload_options)
         snippet = { title: metadata['filename'], channel_id: channel_id }
         snippet.update(upload_options)
         snippet.update(metadata.delete('youtube') || {})
@@ -91,20 +91,19 @@ class Shrine
       end
 
       def update(id, metadata: {})
-        snippet = metadata.delete("youtube")
+        snippet = metadata.delete('youtube')
+        return unless snippet
 
-        if snippet
-          video_query = youtube.list_videos('snippet', id: id)
-          raise VideoNotFound unless video_query.page_info.total_results == 1
+        video_query = youtube.list_videos('snippet', id: id)
+        raise VideoNotFound unless video_query.page_info.total_results == 1
 
-          existing_snippet = video_query.items.first.snippet.to_h
+        existing_snippet = video_query.items.first.snippet.to_h
 
-          video_data = Google::Apis::YoutubeV3::Video.new( id: id, snippet: existing_snippet.merge(snippet) )
-          updated_video = youtube.update_video('snippet', video_data)
-          updated_video.to_h
-        end
+        video_data = Google::Apis::YoutubeV3::Video.new(id: id, snippet: existing_snippet.merge(snippet))
+        updated_video = youtube.update_video('snippet', video_data)
+        updated_video.to_h
       end
-      
+
       protected
 
       def youtube_service(credentials)
@@ -117,11 +116,8 @@ class Shrine
         user_channels = youtube.list_channels('id', mine: true)
         channel_count = user_channels.items.count
 
-        if channel_count == 1
-          user_channels.items.first.id
-        else
-          raise UserChannelNotFound, channel_count
-        end
+        raise(UserChannelNotFound, channel_count) unless channel_count == 1
+        user_channels.items.first.id
       end
 
       def uploads_playlist_id
