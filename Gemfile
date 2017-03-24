@@ -4,3 +4,5 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'webmock', git: "https://github.com/bblimke/webmock.git"
+
+gem 'pry'
