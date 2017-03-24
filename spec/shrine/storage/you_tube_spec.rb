@@ -1,8 +1,12 @@
 require 'spec_helper'
 require 'shrine/storage/linter'
 
+def open_video_file
+  File.open(File.expand_path('../../../upload/blank.mp4', __FILE__))
+end
+
 describe Shrine::Storage::YouTube, :vcr do
-  let(:video) { File.open(File.expand_path('../../../upload/blank.mp4', __FILE__)) }
+  let(:video) { open_video_file }
 
   let(:video_content) do
     begin
@@ -43,7 +47,7 @@ describe Shrine::Storage::YouTube, :vcr do
   let(:youtube_storage) { described_class.new(options) }
 
   it "passes the linter" do
-    Shrine::Storage::Linter.new(youtube_storage).call(->{video})
+    Shrine::Storage::Linter.new(youtube_storage).call(->{ open_video_file })
   end
 
   describe "#initialize" do
