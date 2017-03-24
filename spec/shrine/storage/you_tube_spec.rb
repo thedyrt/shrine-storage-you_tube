@@ -222,36 +222,15 @@ describe Shrine::Storage::YouTube, :vcr do
     let(:second_upload_result) { youtube_storage.upload(video, "original_id", {}) }
     let(:video_ids) { [first_upload_result[:id], second_upload_result[:id]] }
 
-    context "without confirmation" do
-      it "requires confirmation" do
-        expect{ youtube_storage.clear! }.to raise_exception(Shrine::Confirm)
+    it "deletes all videos from the channel and clears the original storage" do
+      video_ids
+      youtube_storage.clear!
+
+      video_ids.each do |id|
+        expect(youtube_storage.exists?(id)).to be false
       end
 
-      it "does not delete the uploaded videos" do
-        begin
-          youtube_storage.clear!
-        rescue Shrine::Confirm
-        end
-
-        video_ids.each do |id|
-          expect(youtube_storage.exists?(id)).to be true
-        end
-
-        expect(original_storage).to_not have_received(:clear!)
-      end
-
-      context "with confimation" do
-        it "deletes all videos from the channel and clears the original storage" do
-          video_ids
-          youtube_storage.clear!(:confirm)
-
-          video_ids.each do |id|
-            expect(youtube_storage.exists?(id)).to be false
-          end
-
-          expect(original_storage).to have_received(:clear!).with(:confirm)
-        end
-      end
+      expect(original_storage).to have_received(:clear!)
     end
   end
 

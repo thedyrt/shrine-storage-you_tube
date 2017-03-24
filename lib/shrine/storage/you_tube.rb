@@ -84,9 +84,7 @@ class Shrine
         end
       end
 
-      def clear!(confirm = nil)
-        raise Shrine::Confirm unless confirm == :confirm
-
+      def clear!
         while uploads_playlist_count > 0
           uploads_playlist_items.items.each do |item|
             video_id = item.snippet.resource_id.video_id
@@ -94,7 +92,7 @@ class Shrine
           end
         end
 
-        original_storage.clear!(confirm)
+        original_storage.clear!
       end
 
       def update(id, metadata: {})
