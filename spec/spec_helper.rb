@@ -30,6 +30,11 @@ VCR.configure do |c|
     auth_header[7..-1] if auth_header.include? "Bearer"
   end
 
+  c.preserve_exact_body_bytes do |http_message|
+    http_message.body.encoding.name == 'ASCII-8BIT' ||
+    !http_message.body.valid_encoding?
+  end
+
   c.before_record do |i|
     if have_zlib and enc = i.response.headers['Content-Encoding'] and 'gzip' == Array(enc).first
       begin
