@@ -141,7 +141,8 @@ class Shrine
       rescue Google::Apis::ClientError => e
         raise e unless (
           e.message.include?('mediaBodyRequired') ||
-          e.message.include?('invalidFilename')
+          e.message.include?('invalidFilename') ||
+          e.message.include?('Invalid upload source')
         ) && io.respond_to?(:download)
 
         youtube.insert_video('snippet', video_data, upload_source: io.download)
