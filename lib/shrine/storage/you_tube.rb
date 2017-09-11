@@ -21,12 +21,16 @@ class Shrine
         refresh_token:,
         channel_id: nil,
         default_privacy: :private,
-        upload_options: {}
+        upload_options: {},
+        client_options: {},
+        request_options: {}
       )
         @youtube = youtube_service(
           client_id: client_id,
           client_secret: client_secret,
-          refresh_token: refresh_token
+          refresh_token: refresh_token,
+          client_options: client_options,
+          request_options: request_options
         )
 
         @channel_id = channel_id
@@ -107,10 +111,16 @@ class Shrine
 
       protected
 
-      def youtube_service(credentials)
-        service = Google::Apis::YoutubeV3::YouTubeService.new
-        service.authorization = Google::Auth::UserRefreshCredentials.new(credentials)
-        service
+      def youtube_service(client_id: , client_secret: , refresh_token: , client_options: {}, request_options: {})
+        Google::Apis::YoutubeV3::YouTubeService.new.tap do |service|
+          service.authorization = Google::Auth::UserRefreshCredentials.new(
+            client_id: client_id,
+            client_secret: client_secret,
+            refresh_token: refresh_token
+          )
+          client_options.each { |k, v| service.client_options[k] = v }
+          request_options.each { |k, v| service.request_options[k] = v }
+        end
       end
 
       def find_user_channel

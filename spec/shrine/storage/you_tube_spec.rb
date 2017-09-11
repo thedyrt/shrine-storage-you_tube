@@ -34,17 +34,22 @@ describe Shrine::Storage::YouTube, :vcr do
 
   before { allow(original_storage).to receive(:stream).and_yield(video_content) }
 
+  let(:client_options) { Hash.new }
+  let(:request_options) { Hash.new }
   let(:minimum_options) do
     {
       original_storage: original_storage,
       client_id: ENV['GOOGLE_OAUTH_CLIENT_ID'] || "abc",
       client_secret: ENV['GOOGLE_OAUTH_CLIENT_SECRET'] || "def",
-      refresh_token: ENV['GOOGLE_OAUTH_REFRESH_TOKEN'] || "hij"
+      refresh_token: ENV['GOOGLE_OAUTH_REFRESH_TOKEN'] || "hij",
+      client_options: client_options,
+      request_options: request_options
     }
   end
 
   let(:options) { minimum_options }
   let(:youtube_storage) { described_class.new(options) }
+  let(:youtube_service) { youtube_storage.youtube }
 
   it "passes the linter" do
     Shrine::Storage::Linter.new(youtube_storage).call(->{ open_video_file })
@@ -57,7 +62,6 @@ describe Shrine::Storage::YouTube, :vcr do
     it "initializes with valid options" do
       expect { youtube_storage }.to_not raise_exception
     end
-
 
     REQUIRED_ATTRIBUTES.each do |key|
       context "without require attribute '#{key}'" do
@@ -76,6 +80,26 @@ describe Shrine::Storage::YouTube, :vcr do
 
         it "exposes #{key} on the instance" do
           expect(youtube_storage.send(key)).to eq option_value
+        end
+      end
+    end
+
+    context "with client_options set" do
+      let(:client_options) {{ application_name: 'test' }}
+
+      it "sets client_options on the YouTubeService" do
+        client_options.each do |key, value|
+          expect(youtube_service.client_options.send(key)).to eq value
+        end
+      end
+    end
+
+    context "with request_options set" do
+      let(:request_options) {{ retries: 3 }}
+
+      it "sets request_options on the YouTubeService" do
+        request_options.each do |key, value|
+          expect(youtube_service.request_options.send(key)).to eq value
         end
       end
     end

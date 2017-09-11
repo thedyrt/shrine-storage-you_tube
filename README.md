@@ -28,6 +28,8 @@ youtube = Shrine::Storage::YouTube.new(
   channel_id: nil, # Channel ID for uploads, defaults to the user's channel
   default_privacy: :private, # one of :private, :public, or :unlisted
   upload_options: {} # may be used to set YouTube's snippet
+  client_options: {} # confgure the Google API client's ClientOptions
+  request_options: {} # confgure the Google API client's RequestOptions
 )
 
 Shrine.storages[:store] = youtube
