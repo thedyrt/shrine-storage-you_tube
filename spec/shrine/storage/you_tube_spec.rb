@@ -117,7 +117,8 @@ describe Shrine::Storage::YouTube, :vcr do
 
   describe "#upload" do
     let(:metadata) { Hash.new }
-    let(:upload_result) { youtube_storage.upload(video, "original_id", metadata) }
+    let(:passed_upload_options) { Hash.new }
+    let(:upload_result) { youtube_storage.upload(video, "original_id", metadata, passed_upload_options) }
 
     it "uploads the video to YouTube and replaces the ID" do
       expect(upload_result[:id]).to_not be_nil
@@ -147,7 +148,7 @@ describe Shrine::Storage::YouTube, :vcr do
       end
     end
 
-    context "with upload_options set" do
+    context "with upload_options set on the storage instance" do
       let(:options) { minimum_options.merge(
         upload_options: {
           title: "Good Morning",
@@ -155,7 +156,19 @@ describe Shrine::Storage::YouTube, :vcr do
         }
       )}
 
-      it "uses upload_options to set the YouTube snippet" do
+      it "uses the instance upload_options to set the YouTube snippet" do
+        expect(upload_result[:snippet][:title]).to eq "Good Morning"
+        expect(upload_result[:snippet][:description]).to eq "Howdy"
+      end
+    end
+
+    context "with upload_options passed to #upload" do
+      let(:passed_upload_options) {{
+        title: "Good Morning",
+        description: "Howdy"
+      }}
+
+      it "uses the passed upload_options to set the YouTube snippet" do
         expect(upload_result[:snippet][:title]).to eq "Good Morning"
         expect(upload_result[:snippet][:description]).to eq "Howdy"
       end

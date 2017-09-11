@@ -42,9 +42,10 @@ class Shrine
         @channel_id ||= find_user_channel
       end
 
-      def upload(io, id, metadata = {}, **upload_options)
+      def upload(io, id, metadata = {}, **passed_upload_options)
         snippet = { title: metadata['filename'], channel_id: channel_id }
         snippet.update(upload_options)
+        snippet.update(passed_upload_options)
         snippet.update(metadata.delete('youtube') || {})
 
         video_data = Google::Apis::YoutubeV3::Video.new(snippet: snippet)
