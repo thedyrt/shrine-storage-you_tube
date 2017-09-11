@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://www.googleapis.com/oauth2/v3/token
+    uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
       base64_string: |
@@ -11,7 +11,7 @@ http_interactions:
         PTxDTElFTlRfU0VDUkVUPg==
     headers:
       User-Agent:
-      - Faraday v0.11.0
+      - Faraday v0.13.1
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -30,7 +30,7 @@ http_interactions:
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Fri, 24 Mar 2017 03:20:37 GMT
+      - Mon, 11 Sep 2017 21:16:17 GMT
       Vary:
       - Origin
       - X-Origin
@@ -45,16 +45,19 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      base64_string: |
-        ewogImFjY2Vzc190b2tlbiI6ICI8QUNDRVNTX1RPS0VOPiIsCiAidG9rZW5f
-        dHlwZSI6ICJCZWFyZXIiLAogImV4cGlyZXNfaW4iOiAzNjAwCn0K
+      encoding: UTF-8
+      string: |
+        {
+         "access_token": "<ACCESS_TOKEN>",
+         "token_type": "Bearer",
+         "expires_in": 3600
+        }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 03:20:37 GMT
+  recorded_at: Mon, 11 Sep 2017 21:16:17 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
@@ -64,29 +67,31 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.9.28 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 03:20:37 GMT
+      - Mon, 11 Sep 2017 21:16:17 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Fri, 24 Mar 2017 03:20:37 GMT
+      - Mon, 11 Sep 2017 21:16:17 GMT
       Date:
-      - Fri, 24 Mar 2017 03:20:37 GMT
+      - Mon, 11 Sep 2017 21:16:17 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/JnMhZFErVU4wW9EK85TAFOnknWQ"'
       Vary:
       - Origin
       - X-Origin
@@ -103,7 +108,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -111,7 +116,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#channelListResponse",
-         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ\"",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/JnMhZFErVU4wW9EK85TAFOnknWQ\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -119,11 +124,11 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#channel",
-           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/bYpw7E-EiYSlS92u1Om6dbfT5aw\"",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/bYpw7E-EiYSlS92u1Om6dbfT5aw\"",
            "id": "UCB6Uq1L3G6CfiPt9l4CI-Gg"
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 03:20:37 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Mon, 11 Sep 2017 21:16:18 GMT
+recorded_with: VCR 3.0.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://www.googleapis.com/oauth2/v3/token
+    uri: https://www.googleapis.com/oauth2/v4/token
     body:
       encoding: ASCII-8BIT
       base64_string: |
@@ -11,7 +11,7 @@ http_interactions:
         PTxDTElFTlRfU0VDUkVUPg==
     headers:
       User-Agent:
-      - Faraday v0.11.0
+      - Faraday v0.13.1
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -30,7 +30,7 @@ http_interactions:
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Fri, 24 Mar 2017 21:22:07 GMT
+      - Mon, 11 Sep 2017 21:16:58 GMT
       Vary:
       - Origin
       - X-Origin
@@ -45,16 +45,19 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
-      encoding: ASCII-8BIT
-      base64_string: |
-        ewogImFjY2Vzc190b2tlbiI6ICI8QUNDRVNTX1RPS0VOPiIsCiAidG9rZW5f
-        dHlwZSI6ICJCZWFyZXIiLAogImV4cGlyZXNfaW4iOiAzNjAwCn0K
+      encoding: UTF-8
+      string: |
+        {
+         "access_token": "<ACCESS_TOKEN>",
+         "token_type": "Bearer",
+         "expires_in": 3600
+        }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:07 GMT
+  recorded_at: Mon, 11 Sep 2017 21:16:58 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
@@ -64,29 +67,31 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.10.1 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 21:22:07 GMT
+      - Mon, 11 Sep 2017 21:16:58 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Fri, 24 Mar 2017 21:22:07 GMT
+      - Mon, 11 Sep 2017 21:16:59 GMT
       Date:
-      - Fri, 24 Mar 2017 21:22:07 GMT
+      - Mon, 11 Sep 2017 21:16:59 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/JnMhZFErVU4wW9EK85TAFOnknWQ"'
       Vary:
       - Origin
       - X-Origin
@@ -103,7 +108,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -111,7 +116,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#channelListResponse",
-         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/JnMhZFErVU4wW9EK85TAFOnknWQ\"",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/JnMhZFErVU4wW9EK85TAFOnknWQ\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -119,13 +124,13 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#channel",
-           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/bYpw7E-EiYSlS92u1Om6dbfT5aw\"",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/bYpw7E-EiYSlS92u1Om6dbfT5aw\"",
            "id": "UCB6Uq1L3G6CfiPt9l4CI-Gg"
           }
          ]
         }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:07 GMT
+  recorded_at: Mon, 11 Sep 2017 21:16:59 GMT
 - request:
     method: post
     uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet
@@ -135,18 +140,18 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.10.1 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 21:22:07 GMT
-      Authorization:
-      - Bearer <BEARER_TOKEN>
+      - Mon, 11 Sep 2017 21:16:59 GMT
       Content-Type:
       - application/json
+      Authorization:
+      - Bearer <BEARER_TOKEN>
       X-Goog-Upload-Protocol:
       - resumable
       X-Goog-Upload-Command:
@@ -154,33 +159,31 @@ http_interactions:
       X-Goog-Upload-Header-Content-Length:
       - '2648'
       X-Goog-Upload-Header-Content-Type:
-      - ''
-      Content-Length:
-      - '65'
+      - application/octet-stream
   response:
     status:
       code: 200
       message: OK
     headers:
       X-Guploader-Uploadid:
-      - AEnB2Urtqx-gBB2iH-9WtNNwmkZEqtXdLUlySzG4_YiAChJhu0-qxdsFu_iYFMibSGyLx3fY_x1dTw5-PPTQjX9_xIhuJwvHJA
+      - AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU
       X-Goog-Upload-Status:
       - active
       X-Goog-Upload-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Urtqx-gBB2iH-9WtNNwmkZEqtXdLUlySzG4_YiAChJhu0-qxdsFu_iYFMibSGyLx3fY_x1dTw5-PPTQjX9_xIhuJwvHJA&upload_protocol=resumable
+      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
       X-Goog-Upload-Control-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Urtqx-gBB2iH-9WtNNwmkZEqtXdLUlySzG4_YiAChJhu0-qxdsFu_iYFMibSGyLx3fY_x1dTw5-PPTQjX9_xIhuJwvHJA&upload_protocol=resumable
+      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
       X-Goog-Upload-Header-Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/PR2nCVfxUB0ee4OjPCAmL3WqRLo"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/OgS21Ad2eEN6S2WK7v-f_ExBDxA"'
       X-Goog-Upload-Header-Vary:
       - Origin
       - X-Origin
       X-Goog-Upload-Header-X-Goog-Correlation-Id:
-      - IuYrZE4DhEQ
+      - 9FeHUAjnGqg
       X-Goog-Upload-Header-X-Google-Backends:
-      - iucd6:8172
+      - iuhh79:8146
       X-Goog-Upload-Header-X-Google-Session-Info:
-      - CMvhzvXIEBoCGAY6hgEKIXlvdXR1YmUtc3R1YmJ5LXByb3h5LWV4dGVybmFsLWFwaRIHeW91dHViZRjx7Nb5pQUiSDE4MTk4NTk4MjA2NS0yZzYxcHBqN2Q5dWJyYTRyMzBlaTZoZjVpNGE0MDNtbi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbTD-CjD4CjD7CkqXARKDAXlhMjkuR2x3WUJOclNKb3JiTHhZWVF5aWVSdlpzVEh2aG9JNzV3WC1JZS12bDhuR3NIMXo2LTM4RWRldGVOV1hYa2lCQnoyU0ZvV04wS2JvWXdoQnZGU2E3WEoyN2UtTzVwYWJiOFplVGFaUkxBU05mVFVCTGN4cWg1aHN5QVRabnhnMAQ6DTEvSGFkVmFWYkhPRn4
+      - CMvhzvXIEBoCGAY6hgEKIXlvdXR1YmUtc3R1YmJ5LXByb3h5LWV4dGVybmFsLWFwaRIHeW91dHViZRjx7Nb5pQUiSDE4MTk4NTk4MjA2NS0yZzYxcHBqN2Q5dWJyYTRyMzBlaTZoZjVpNGE0MDNtbi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbTD-CjD4CjD7CkqYARKEAXlhMjkuR2wzREJJYTNzd2lRRExUSjRsS0V1ZHh2WWFwYVhWZ2k1U0xKcU9yUFU4N2VHQzI1dmRFV2NiZ1kyMmxZTXpGSG5OazZPWVo4ZGk4VEZ6WEZPdzJ1NFRhenVRRjdnSW1lLURUYXdCM25qQktPMXlQUFdYS0JnLURHejlmUzFoUTAEOg0xL0hhZFZhVmJIT0Z-
       X-Goog-Upload-Header-Cache-Control:
       - no-cache, no-store, max-age=0, must-revalidate
       X-Goog-Upload-Header-Pragma:
@@ -188,25 +191,25 @@ http_interactions:
       X-Goog-Upload-Header-Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       X-Goog-Upload-Header-Date:
-      - Fri, 24 Mar 2017 21:22:08 GMT
+      - Mon, 11 Sep 2017 21:17:00 GMT
       Content-Length:
       - '0'
       Date:
-      - Fri, 24 Mar 2017 21:22:08 GMT
+      - Mon, 11 Sep 2017 21:17:00 GMT
       Server:
       - UploadServer
       Content-Type:
       - text/html; charset=UTF-8
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:08 GMT
+  recorded_at: Mon, 11 Sep 2017 21:17:00 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2Urtqx-gBB2iH-9WtNNwmkZEqtXdLUlySzG4_YiAChJhu0-qxdsFu_iYFMibSGyLx3fY_x1dTw5-PPTQjX9_xIhuJwvHJA&upload_protocol=resumable
+    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
     body:
       encoding: UTF-8
       base64_string: |
@@ -272,40 +275,38 @@ http_interactions:
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.10.1 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 21:22:08 GMT
+      - Mon, 11 Sep 2017 21:17:00 GMT
+      Content-Type:
+      - application/octet-stream
       Authorization:
       - Bearer <BEARER_TOKEN>
-      Content-Type:
-      - application/json
       X-Goog-Upload-Command:
       - upload, finalize
       X-Goog-Upload-Offset:
       - '0'
-      Content-Length:
-      - '2648'
   response:
     status:
       code: 200
       message: OK
     headers:
       X-Guploader-Uploadid:
-      - AEnB2Urtqx-gBB2iH-9WtNNwmkZEqtXdLUlySzG4_YiAChJhu0-qxdsFu_iYFMibSGyLx3fY_x1dTw5-PPTQjX9_xIhuJwvHJA
+      - AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU
       X-Goog-Upload-Status:
       - final
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/PR2nCVfxUB0ee4OjPCAmL3WqRLo"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/OgS21Ad2eEN6S2WK7v-f_ExBDxA"'
       Vary:
       - Origin
       - X-Origin
       X-Goog-Correlation-Id:
-      - IuYrZE4DhEQ
+      - 9FeHUAjnGqg
       Content-Type:
       - application/json; charset=UTF-8
       Cache-Control:
@@ -315,38 +316,38 @@ http_interactions:
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Fri, 24 Mar 2017 21:22:10 GMT
+      - Mon, 11 Sep 2017 21:17:02 GMT
       Content-Length:
       - '808'
       Server:
       - UploadServer
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
     body:
       encoding: UTF-8
       string: |
         {
          "kind": "youtube#video",
-         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/PR2nCVfxUB0ee4OjPCAmL3WqRLo\"",
-         "id": "IuYrZE4DhEQ",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/OgS21Ad2eEN6S2WK7v-f_ExBDxA\"",
+         "id": "9FeHUAjnGqg",
          "snippet": {
-          "publishedAt": "2017-03-24T21:22:08.000Z",
+          "publishedAt": "2017-09-11T21:16:59.000Z",
           "channelId": "UCB6Uq1L3G6CfiPt9l4CI-Gg",
           "title": "unknown",
           "description": "",
           "thumbnails": {
            "default": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/default.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/default.jpg",
             "width": 120,
             "height": 90
            },
            "medium": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/mqdefault.jpg",
             "width": 320,
             "height": 180
            },
            "high": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/hqdefault.jpg",
             "width": 480,
             "height": 360
            }
@@ -361,39 +362,41 @@ http_interactions:
          }
         }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:10 GMT
+  recorded_at: Mon, 11 Sep 2017 21:17:02 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=IuYrZE4DhEQ&part=snippet
+    uri: https://www.googleapis.com/youtube/v3/videos?id=9FeHUAjnGqg&part=snippet
     body:
       encoding: UTF-8
       string: ''
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.10.1 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 21:22:10 GMT
+      - Mon, 11 Sep 2017 21:17:02 GMT
       Authorization:
       - Bearer <BEARER_TOKEN>
+      Content-Type:
+      - application/x-www-form-urlencoded
   response:
     status:
       code: 200
       message: OK
     headers:
       Expires:
-      - Fri, 24 Mar 2017 21:22:10 GMT
+      - Mon, 11 Sep 2017 21:17:02 GMT
       Date:
-      - Fri, 24 Mar 2017 21:22:10 GMT
+      - Mon, 11 Sep 2017 21:17:02 GMT
       Cache-Control:
       - private, max-age=300, must-revalidate, no-transform
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/53edZNW6cm502yoa67hNh_OkIXo"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/AvMR9WHZGBlqJR7nvLslIRTbdUk"'
       Vary:
       - Origin
       - X-Origin
@@ -410,7 +413,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -418,7 +421,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#videoListResponse",
-         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/53edZNW6cm502yoa67hNh_OkIXo\"",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/AvMR9WHZGBlqJR7nvLslIRTbdUk\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -426,26 +429,26 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#video",
-           "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/PR2nCVfxUB0ee4OjPCAmL3WqRLo\"",
-           "id": "IuYrZE4DhEQ",
+           "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/OgS21Ad2eEN6S2WK7v-f_ExBDxA\"",
+           "id": "9FeHUAjnGqg",
            "snippet": {
-            "publishedAt": "2017-03-24T21:22:08.000Z",
+            "publishedAt": "2017-09-11T21:16:59.000Z",
             "channelId": "UCB6Uq1L3G6CfiPt9l4CI-Gg",
             "title": "unknown",
             "description": "",
             "thumbnails": {
              "default": {
-              "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/default.jpg",
+              "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/default.jpg",
               "width": 120,
               "height": 90
              },
              "medium": {
-              "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/mqdefault.jpg",
+              "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/mqdefault.jpg",
               "width": 320,
               "height": 180
              },
              "high": {
-              "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/hqdefault.jpg",
+              "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/hqdefault.jpg",
               "width": 480,
               "height": 360
              }
@@ -462,32 +465,30 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:10 GMT
+  recorded_at: Mon, 11 Sep 2017 21:17:02 GMT
 - request:
     method: put
     uri: https://www.googleapis.com/youtube/v3/videos?part=snippet
     body:
       encoding: UTF-8
-      string: '{"id":"IuYrZE4DhEQ","snippet":{"categoryId":"22","channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","channelTitle":"another
-        channel","description":"Howdy","liveBroadcastContent":"none","localized":{"description":"","title":"unknown"},"publishedAt":"2017-03-24T21:22:08.000+00:00","thumbnails":{"default":{"height":90,"url":"https://i.ytimg.com/vi/IuYrZE4DhEQ/default.jpg","width":120},"high":{"height":360,"url":"https://i.ytimg.com/vi/IuYrZE4DhEQ/hqdefault.jpg","width":480},"medium":{"height":180,"url":"https://i.ytimg.com/vi/IuYrZE4DhEQ/mqdefault.jpg","width":320}},"title":"Good
+      string: '{"id":"9FeHUAjnGqg","snippet":{"categoryId":"22","channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","channelTitle":"another
+        channel","description":"Howdy","liveBroadcastContent":"none","localized":{"description":"","title":"unknown"},"publishedAt":"2017-09-11T21:16:59.000+00:00","thumbnails":{"default":{"height":90,"url":"https://i.ytimg.com/vi/9FeHUAjnGqg/default.jpg","width":120},"high":{"height":360,"url":"https://i.ytimg.com/vi/9FeHUAjnGqg/hqdefault.jpg","width":480},"medium":{"height":180,"url":"https://i.ytimg.com/vi/9FeHUAjnGqg/mqdefault.jpg","width":320}},"title":"Good
         Morning"}}'
     headers:
       User-Agent:
       - |-
-        unknown/0.0.0 google-api-ruby-client/0.10.1 Mac OS X/10.12.4
+        unknown/0.0.0 google-api-ruby-client/0.13.6 Mac OS X/10.12.6
          (gzip)
       Accept:
       - "*/*"
       Accept-Encoding:
       - gzip,deflate
       Date:
-      - Fri, 24 Mar 2017 21:22:10 GMT
-      Authorization:
-      - Bearer <BEARER_TOKEN>
+      - Mon, 11 Sep 2017 21:17:02 GMT
       Content-Type:
       - application/json
-      Content-Length:
-      - '582'
+      Authorization:
+      - Bearer <BEARER_TOKEN>
   response:
     status:
       code: 200
@@ -500,9 +501,9 @@ http_interactions:
       Expires:
       - Mon, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Fri, 24 Mar 2017 21:22:10 GMT
+      - Mon, 11 Sep 2017 21:17:03 GMT
       Etag:
-      - '"uQc-MPTsstrHkQcRXL3IWLmeNsM/WUAfRyANL3nhMmIrnqfqLGGFS8c"'
+      - '"m2yskBQFythfE4irbTIeOgYYfBU/epmu4Hq3X0AoE6-wo2TWfc9IiTI"'
       Vary:
       - Origin
       - X-Origin
@@ -519,7 +520,7 @@ http_interactions:
       Server:
       - GSE
       Alt-Svc:
-      - quic=":443"; ma=2592000; v="37,36,35"
+      - quic=":443"; ma=2592000; v="39,38,37,35"
       Transfer-Encoding:
       - chunked
     body:
@@ -527,26 +528,26 @@ http_interactions:
       string: |
         {
          "kind": "youtube#video",
-         "etag": "\"uQc-MPTsstrHkQcRXL3IWLmeNsM/WUAfRyANL3nhMmIrnqfqLGGFS8c\"",
-         "id": "IuYrZE4DhEQ",
+         "etag": "\"m2yskBQFythfE4irbTIeOgYYfBU/epmu4Hq3X0AoE6-wo2TWfc9IiTI\"",
+         "id": "9FeHUAjnGqg",
          "snippet": {
-          "publishedAt": "2017-03-24T21:22:08.000Z",
+          "publishedAt": "2017-09-11T21:16:59.000Z",
           "channelId": "UCB6Uq1L3G6CfiPt9l4CI-Gg",
           "title": "Good Morning",
           "description": "Howdy",
           "thumbnails": {
            "default": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/default.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/default.jpg",
             "width": 120,
             "height": 90
            },
            "medium": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/mqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/mqdefault.jpg",
             "width": 320,
             "height": 180
            },
            "high": {
-            "url": "https://i.ytimg.com/vi/IuYrZE4DhEQ/hqdefault.jpg",
+            "url": "https://i.ytimg.com/vi/9FeHUAjnGqg/hqdefault.jpg",
             "width": 480,
             "height": 360
            }
@@ -562,5 +563,5 @@ http_interactions:
          }
         }
     http_version: 
-  recorded_at: Fri, 24 Mar 2017 21:22:11 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Mon, 11 Sep 2017 21:17:03 GMT
+recorded_with: VCR 3.0.3
