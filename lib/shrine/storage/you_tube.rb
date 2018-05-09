@@ -156,7 +156,9 @@ class Shrine
           e.message.include?('Invalid upload source')
         ) && io.respond_to?(:download)
 
-        youtube.insert_video('snippet', video_data, upload_source: io.download)
+        io.download do |tempfile|
+          youtube.insert_video('snippet', video_data, upload_source: tempfile)
+        end
       ensure
         io.rewind
       end
