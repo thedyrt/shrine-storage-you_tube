@@ -21,6 +21,10 @@ gemfile:
   - gemfiles/shrine_2.14.0.gemfile
   - gemfiles/shrine_2.15.0.gemfile
   - gemfiles/shrine_2.16.0.gemfile
+matrix:
+  allow_failures:
+    gemfile:
+      - gemfiles/shrine_2.4.1.gemfile
 before_install:
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '< 2'
