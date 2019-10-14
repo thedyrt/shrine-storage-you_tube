@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'shrine', '> 2.0', '< 4.0'
-  spec.add_dependency 'google-api-client', '~> 0.13.0'
+  spec.add_dependency 'google-api-client', '> 0.11'
 
   spec.add_development_dependency "appraisal"
   spec.add_development_dependency "bundler", "~> 1.10"
