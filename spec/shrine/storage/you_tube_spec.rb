@@ -23,14 +23,21 @@ describe Shrine::Storage::YouTube, :vcr do
     tmp
   end
 
-  let(:original_storage) { double(
-    upload: true,
-    download: downloaded_video,
-    read: video_content,
-    open: video,
-    delete: true,
-    clear!: true
-  )}
+  let(:original_storage) do
+    double(
+      upload: true,
+      download: downloaded_video,
+      read: video_content,
+      delete: true,
+      clear!: true
+    ).tap do |storage|
+      allow(storage).to receive(:open) do |id|
+        raise Shrine::FileNotFound if id == 'nonexisting'
+
+        video
+      end
+    end
+  end
 
   before { allow(original_storage).to receive(:stream).and_yield(video_content) }
 
@@ -157,7 +164,7 @@ describe Shrine::Storage::YouTube, :vcr do
       end
 
       context "with 'youtube' in metadata" do
-        let(:metadata) {{ 
+        let(:metadata) {{
           'filename' => 'hello.mp4',
           'youtube' => {
             title: "Good Morning",
@@ -278,7 +285,7 @@ describe Shrine::Storage::YouTube, :vcr do
   describe "#update" do
     let(:upload_result) { youtube_storage.upload(video, "original_id", {}) }
     let(:video_id) { upload_result[:id] }
-    let(:metadata) {{ 
+    let(:metadata) {{
       'youtube' => {
         title: "Good Morning",
         description: "Howdy"

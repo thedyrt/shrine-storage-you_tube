@@ -19,6 +19,7 @@
   2.17.1
   2.18.1
   2.19.3
+  3.0.0
 ].each do |shrine_version|
   appraise "shrine-#{shrine_version}" do
     gem 'shrine', shrine_version

@@ -24,6 +24,7 @@ gemfile:
   - gemfiles/shrine_2.17.1.gemfile
   - gemfiles/shrine_2.18.1.gemfile
   - gemfiles/shrine_2.19.3.gemfile
+  - gemfiles/shrine_3.0.0.gemfile
 matrix:
   allow_failures:
     - gemfile: gemfiles/shrine_2.4.1.gemfile
