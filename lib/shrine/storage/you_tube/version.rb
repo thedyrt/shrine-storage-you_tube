@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Shrine
   module Storage
     class YouTube

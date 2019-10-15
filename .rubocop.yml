@@ -1,0 +1,98 @@
+require:
+  - rubocop-rspec
+
+
+AllCops:
+  TargetRubyVersion: 2.4
+  DisplayCopNames: true
+  DisplayStyleGuide: false
+  Exclude:
+    - 'gemfiles/*'
+
+Layout/ClassStructure:
+  Enabled: true
+
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
+
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - aasm
+    - class_methods
+    - configure
+    - included
+  Exclude:
+    - 'Guardfile'
+    - 'spec/**/*'
+    - 'util/*'
+    - 'lib/tasks/*'
+    - 'db/migrate/*'
+    - 'config/routes.rb'
+    - 'config/sitemap.rb'
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/LineLength:
+  Enabled: false
+
+# Prefer Metrics/AbcSize
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Max: 200
+
+Naming/UncommunicativeMethodParamName:
+  AllowedNames:
+    - io
+    - id
+    - to
+    - by
+    - on
+    - in
+    - at
+    - _
+
+RSpec/ContextWording:
+  Prefixes:
+    - after
+    - when
+    - with
+    - without
+    - for
+    - as
+
+RSpec/SharedContext:
+  Exclude:
+    - 'spec/acceptance/**'
+
+Security/Open:
+  Severity: warning
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/IpAddresses:
+  Enabled: true
+
+Style/Lambda:
+  EnforcedStyle: literal
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/OptionHash:
+  Enabled: true
+
+Style/Send:
+  Enabled: true

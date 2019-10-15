@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'shrine/storage/you_tube/version'
 require 'google/apis/youtube_v3'
 
@@ -14,6 +16,7 @@ class Shrine
 
       attr_reader :original_storage, :youtube, :default_privacy, :upload_options
 
+      extend Forwardable
       def initialize(
         original_storage:,
         client_id:,
@@ -39,8 +42,7 @@ class Shrine
         @original_storage = original_storage
       end
 
-      extend Forwardable
-      delegate [:download, :open, :read, :stream] => :original_storage
+      delegate %i[download open read stream] => :original_storage
 
       def channel_id
         @channel_id ||= find_user_channel
@@ -67,12 +69,13 @@ class Shrine
 
       def delete(id)
         return unless exists?(id)
+
         youtube.delete_video(id)
         original_storage.delete(id)
       end
 
       def url(id, type: nil, **options)
-        case type && type.to_sym
+        case type&.to_sym
         when :original
           original_storage.url(id, **options)
         when :embed
@@ -85,7 +88,7 @@ class Shrine
       end
 
       def clear!
-        while uploads_playlist_count > 0
+        while uploads_playlist_count.positive?
           uploads_playlist_items.items.each do |item|
             video_id = item.snippet.resource_id.video_id
             youtube.delete_video(video_id)
@@ -111,7 +114,7 @@ class Shrine
 
       protected
 
-      def youtube_service(client_id: , client_secret: , refresh_token: , client_options: {}, request_options: {})
+      def youtube_service(client_id:, client_secret:, refresh_token:, client_options: {}, request_options: {})
         Google::Apis::YoutubeV3::YouTubeService.new.tap do |service|
           service.authorization = Google::Auth::UserRefreshCredentials.new(
             client_id: client_id,
@@ -128,6 +131,7 @@ class Shrine
         channel_count = user_channels.items.count
 
         raise(UserChannelNotFound, channel_count) unless channel_count == 1
+
         user_channels.items.first.id
       end
 
