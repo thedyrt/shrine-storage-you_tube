@@ -151,7 +151,7 @@ describe Shrine::Storage::YouTube, :vcr do
   describe '#upload' do
     let(:metadata) { {} }
     let(:passed_upload_options) { {} }
-    let(:upload_result) { youtube_storage.upload(video, 'original_id', metadata, passed_upload_options) }
+    let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, metadata, passed_upload_options) }
 
     it 'uploads the video to YouTube and replaces the ID' do
       expect(upload_result[:id]).not_to be_nil
@@ -227,7 +227,7 @@ describe Shrine::Storage::YouTube, :vcr do
     end
 
     context 'after a video has been uploaded' do
-      let(:upload_result) { youtube_storage.upload(video, 'original_id', {}) }
+      let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, {}) }
       let(:video_id) { upload_result[:id] }
 
       it 'finds the uploaded video' do
@@ -237,7 +237,7 @@ describe Shrine::Storage::YouTube, :vcr do
   end
 
   describe '#delete' do
-    let(:upload_result) { youtube_storage.upload(video, 'original_id', {}) }
+    let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, {}) }
     let(:video_id) { upload_result[:id] }
 
     it 'deletes uploaded videos by ID' do
@@ -274,8 +274,8 @@ describe Shrine::Storage::YouTube, :vcr do
   end
 
   describe '#clear!' do
-    let(:first_upload_result) { youtube_storage.upload(video, 'original_id', {}) }
-    let(:second_upload_result) { youtube_storage.upload(video, 'original_id', {}) }
+    let(:first_upload_result) { youtube_storage.upload(video, 'original_id'.dup, {}) }
+    let(:second_upload_result) { youtube_storage.upload(video, 'original_id'.dup, {}) }
     let(:video_ids) { [first_upload_result[:id], second_upload_result[:id]] }
 
     it 'deletes all videos from the channel and clears the original storage' do
@@ -291,7 +291,7 @@ describe Shrine::Storage::YouTube, :vcr do
   end
 
   describe '#update' do
-    let(:upload_result) { youtube_storage.upload(video, 'original_id', {}) }
+    let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, {}) }
     let(:video_id) { upload_result[:id] }
     let(:metadata) do
       {
