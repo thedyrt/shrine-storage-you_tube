@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 gem "webmock", git: "https://github.com/bblimke/webmock.git"
 gem "pry"
+gem "rubocop"
+gem "rubocop-rspec"
 gem "shrine", "2.19.3"
 
 gemspec path: "../"

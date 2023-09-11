@@ -56,11 +56,11 @@ http_interactions:
          "token_type": "Bearer",
          "expires_in": 3600
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:41 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
+    uri: https://youtube.googleapis.com/youtube/v3/channels?mine=true&part=id
     body:
       encoding: UTF-8
       string: ''
@@ -129,11 +129,11 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:41 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet
+    uri: https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet
     body:
       encoding: UTF-8
       string: '{"snippet":{"channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","title":null}}'
@@ -170,9 +170,9 @@ http_interactions:
       X-Goog-Upload-Status:
       - active
       X-Goog-Upload-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
+      - https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
       X-Goog-Upload-Control-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
+      - https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
       X-Goog-Upload-Header-Etag:
       - '"m2yskBQFythfE4irbTIeOgYYfBU/BRsZfhiFaB_8iIabXuaQvgdPxcY"'
       X-Goog-Upload-Header-Vary:
@@ -205,11 +205,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:42 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
+    uri: https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UpMsi5wILMFsbT7_vnZ7LD7erZtVPpZpNLNDUvMtS4GJCRXDoLZhHbClviIi3mPBvvTUl-7zY78ddNehF5fkNh5bmOVAwAD5FPZvwTGw3kfnjhG7tM&upload_protocol=resumable
     body:
       encoding: UTF-8
       base64_string: |
@@ -361,11 +361,11 @@ http_interactions:
           }
          }
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:44 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
     body:
       encoding: UTF-8
       string: ''
@@ -434,11 +434,11 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:44 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
     body:
       encoding: UTF-8
       string: ''
@@ -507,11 +507,11 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:44 GMT
 - request:
     method: delete
-    uri: https://www.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8
     body:
       encoding: UTF-8
       string: ''
@@ -555,11 +555,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:44 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=rNbXHSf9LJ8&part=id
     body:
       encoding: UTF-8
       string: ''
@@ -622,6 +622,6 @@ http_interactions:
          },
          "items": []
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:44 GMT
 recorded_with: VCR 3.0.3

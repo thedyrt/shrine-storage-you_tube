@@ -56,11 +56,11 @@ http_interactions:
          "token_type": "Bearer",
          "expires_in": 3600
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:58 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/channels?mine=true&part=id
+    uri: https://youtube.googleapis.com/youtube/v3/channels?mine=true&part=id
     body:
       encoding: UTF-8
       string: ''
@@ -129,11 +129,11 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:16:59 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet
+    uri: https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet
     body:
       encoding: UTF-8
       string: '{"snippet":{"channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","title":null}}'
@@ -170,9 +170,9 @@ http_interactions:
       X-Goog-Upload-Status:
       - active
       X-Goog-Upload-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
+      - https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
       X-Goog-Upload-Control-Url:
-      - https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
+      - https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
       X-Goog-Upload-Header-Etag:
       - '"m2yskBQFythfE4irbTIeOgYYfBU/OgS21Ad2eEN6S2WK7v-f_ExBDxA"'
       X-Goog-Upload-Header-Vary:
@@ -205,11 +205,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:17:00 GMT
 - request:
     method: post
-    uri: https://www.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
+    uri: https://youtube.googleapis.com/upload/youtube/v3/videos?part=snippet&upload_id=AEnB2UrgR2mWPmZtbQFmN6Erbz5LDTiga8lciqHzWr-14nYqVKDYxIZ2fsXFSo0V9koA7ly8seB5AXaHCHpcC2kl0RxIEC1qBPj7NSv1VpmWi-S0W7sW8AU&upload_protocol=resumable
     body:
       encoding: UTF-8
       base64_string: |
@@ -361,11 +361,11 @@ http_interactions:
           }
          }
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:17:02 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/youtube/v3/videos?id=9FeHUAjnGqg&part=snippet
+    uri: https://youtube.googleapis.com/youtube/v3/videos?id=9FeHUAjnGqg&part=snippet
     body:
       encoding: UTF-8
       string: ''
@@ -464,11 +464,11 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:17:02 GMT
 - request:
     method: put
-    uri: https://www.googleapis.com/youtube/v3/videos?part=snippet
+    uri: https://youtube.googleapis.com/youtube/v3/videos?part=snippet
     body:
       encoding: UTF-8
       string: '{"id":"9FeHUAjnGqg","snippet":{"categoryId":"22","channelId":"UCB6Uq1L3G6CfiPt9l4CI-Gg","channelTitle":"another
@@ -562,6 +562,6 @@ http_interactions:
           "defaultAudioLanguage": "en-US"
          }
         }
-    http_version: 
+    http_version:
   recorded_at: Mon, 11 Sep 2017 21:17:03 GMT
 recorded_with: VCR 3.0.3

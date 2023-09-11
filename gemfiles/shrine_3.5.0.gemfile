@@ -6,6 +6,6 @@ gem "webmock", git: "https://github.com/bblimke/webmock.git"
 gem "pry"
 gem "rubocop"
 gem "rubocop-rspec"
-gem "shrine", "2.16.0"
+gem "shrine", "3.5.0"
 
 gemspec path: "../"
