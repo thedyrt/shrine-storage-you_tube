@@ -55,7 +55,7 @@ describe Shrine::Storage::YouTube, :vcr do
   end
 
   let(:options) { minimum_options }
-  let(:youtube_storage) { described_class.new(options) }
+  let(:youtube_storage) { described_class.new(**options) }
   let(:youtube_service) { youtube_storage.youtube }
 
   before { allow(original_storage).to receive(:stream).and_yield(video_content) }
@@ -151,7 +151,7 @@ describe Shrine::Storage::YouTube, :vcr do
   describe '#upload' do
     let(:metadata) { {} }
     let(:passed_upload_options) { {} }
-    let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, metadata, passed_upload_options) }
+    let(:upload_result) { youtube_storage.upload(video, 'original_id'.dup, metadata, **passed_upload_options) }
 
     it 'uploads the video to YouTube and replaces the ID' do
       expect(upload_result[:id]).not_to be_nil
