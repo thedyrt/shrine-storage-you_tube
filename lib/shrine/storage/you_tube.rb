@@ -48,17 +48,22 @@ class Shrine
         @channel_id ||= find_user_channel
       end
 
-      def upload(io, id, metadata = {}, **passed_upload_options)
-        snippet = { title: metadata['filename'], channel_id: channel_id }
+      def upload(io, id, _old_metadata = {}, shrine_metadata: {}, **passed_upload_options)
+        # Shrine stopped using this _old_metadata positional argument in 2.0.0
+        # which is the first version this gem supports. Unfortunately, their linter
+        # didn't switch to dropping the argument until 3.2.1, so we include it here
+        # for compatibility with the linter under earlier versions of Shrine.
+
+        snippet = { title: shrine_metadata['filename'], channel_id: channel_id }
         snippet.update(upload_options)
         snippet.update(passed_upload_options)
-        snippet.update(metadata.delete('youtube') || {})
+        snippet.update(shrine_metadata.delete('youtube') || {})
 
         video_data = Google::Apis::YoutubeV3::Video.new(snippet: snippet)
         uploaded_video = upload_video(io, video_data)
 
         id.replace(uploaded_video.id)
-        original_storage.upload(io, id, metadata)
+        original_storage.upload(io, id, shrine_metadata: shrine_metadata)
 
         uploaded_video.to_h
       end
